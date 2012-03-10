@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "number.h"
+#include <gtest/gtest.h>
 
 // Tests the putDigit() method.
 TEST(Number, putDigit) {

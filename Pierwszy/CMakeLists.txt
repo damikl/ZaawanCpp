@@ -13,7 +13,7 @@ enable_testing()
 add_executable(runUnitTests
     number_unittests.cpp
 )
-target_link_libraries(runUnitTests gtest gtest_main)
+target_link_libraries(runUnitTests gtest gtest_main pthread)
 
 #Add a test which runs this executable:
 

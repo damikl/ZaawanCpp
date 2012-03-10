@@ -4,5 +4,3 @@ Google test
 Projekt powinien się kompilować po użyciu cmake ./
 a następnie make.
 
-Problemy:
-Jak na razie nie udało się podłaczyć biblioteki google tests, błędy w pliku CMakeLists.txt

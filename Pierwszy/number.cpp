@@ -1,5 +1,5 @@
 #include "number.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 Number::Number(long num) : number(num) {}
 
