@@ -1,0 +1,27 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+indent_mode=2
+
+[project]
+name=ListaZadan
+base_path=/home/damian/ZaawansowanyCPP/Projekty/Drugi
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=1
+FILE_NAME_0=581;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.hpp;0;4
+FILE_NAME_1=452;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.cpp;0;4
+FILE_NAME_2=0;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.hpp;0;4
+FILE_NAME_3=1022;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.cpp;0;4
+FILE_NAME_4=43;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.hpp;0;4
+FILE_NAME_5=737;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.cpp;0;4
+FILE_NAME_6=52;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/session.hpp;0;4
+FILE_NAME_7=153;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/session.cpp;0;4
