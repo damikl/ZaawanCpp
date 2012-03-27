@@ -16,4 +16,10 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=-1
+current_page=5
+FILE_NAME_0=115;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.hpp;0;4
+FILE_NAME_1=3786;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.cpp;0;4
+FILE_NAME_2=690;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task1_unittest.cpp;0;4
+FILE_NAME_3=0;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.hpp;0;4
+FILE_NAME_4=3504;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.cpp;0;4
+FILE_NAME_5=182;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.hpp;0;4
