@@ -16,10 +16,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=5
-FILE_NAME_0=115;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.hpp;0;4
-FILE_NAME_1=3786;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.cpp;0;4
-FILE_NAME_2=690;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task1_unittest.cpp;0;4
-FILE_NAME_3=0;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.hpp;0;4
-FILE_NAME_4=3504;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.cpp;0;4
-FILE_NAME_5=182;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.hpp;0;4
+current_page=9
+FILE_NAME_0=272;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.hpp;0;4
+FILE_NAME_1=4344;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task.cpp;0;4
+FILE_NAME_2=1818;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/task1_unittest.cpp;0;4
+FILE_NAME_3=227;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.hpp;0;4
+FILE_NAME_4=546;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos.cpp;0;4
+FILE_NAME_5=1702;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/todos1_unittest.cpp;0;4
+FILE_NAME_6=315;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.hpp;0;4
+FILE_NAME_7=493;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager.cpp;0;4
+FILE_NAME_8=967;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/datamanager1_unittest.cpp;0;4
+FILE_NAME_9=1120;C++;0;16;1;1;0;/home/damian/ZaawansowanyCPP/Projekty/Drugi/cmdinterface.cpp;0;4

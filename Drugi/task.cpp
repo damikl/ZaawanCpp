@@ -126,6 +126,7 @@ Task Task::convert(const string& printedtask) {
 						break;
 					}
 					else
+					if(!result.description.empty())
 					{
 						result.description += " ";
 					}
@@ -142,9 +143,10 @@ Task Task::convert(const string& printedtask) {
 					ss >> result.timeinfo.tm_mon;
 					ss >> result.timeinfo.tm_year;
 					ss >> result.timeinfo.tm_hour;
+					--result.timeinfo.tm_hour;
 					ss >> result.timeinfo.tm_min;
 					ss >> result.timeinfo.tm_sec;
-					
+					mktime(&(result.timeinfo));
 					break;
 				}
 			}
@@ -209,7 +211,10 @@ bool Task::setDate(int day, int month, int year ) {
 		return false;
 	}
 	if(tmp.tm_mday != day)
+	{
+		cerr << "day shifted to: " << tmp.tm_mday << " " << tmp.tm_mon+1 << " " << tmp.tm_year +1900 << endl;
 		return false;
+	}
 
 	timeinfo = tmp;
 	return true;

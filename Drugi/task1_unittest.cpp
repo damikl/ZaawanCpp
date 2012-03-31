@@ -30,19 +30,11 @@ using namespace std;
   string priority2;
   string severity2;
   
-//  Task t0_;
   Task t1_;
   Task t2_;
   
 };
- /*
- TEST_F(TaskTest, IsEmptyInitially) {
-  EXPECT_TRUE(q0_.getTitle().empty());
-  EXPECT_TRUE(q0_.getDescription().empty());
-  EXPECT_TRUE(q0_.getPriority().empty());
-  EXPECT_TRUE(q0_.getSeverity().empty());
-}
-*/
+
 TEST_F(TaskTest, initNormalValues) {
 
   EXPECT_EQ("Wycieczka", t2_.getTitle());
@@ -67,20 +59,20 @@ TEST_F(TaskTest, doInitialTrim) {
 
 TEST_F(TaskTest, setValidDate) {
   
-  ASSERT_FALSE(t1_.setDate(8,0,2000));
-  ASSERT_FALSE(t1_.setDate(8,13,2000));
+  EXPECT_FALSE(t1_.setDate(8,0,2000));
+  EXPECT_FALSE(t1_.setDate(8,13,2000));
   
-  ASSERT_FALSE(t1_.setDate(32,1,2000));
-  ASSERT_FALSE(t1_.setDate(0,1,2000));
+  EXPECT_FALSE(t1_.setDate(32,1,2000));
+  EXPECT_FALSE(t1_.setDate(0,1,2000));
   
   //Leap Year
-  ASSERT_FALSE(t1_.setDate(29,2,2011));
-  ASSERT_TRUE(t1_.setDate(29,2,2012));
+  EXPECT_FALSE(t1_.setDate(29,2,2001));
+  EXPECT_TRUE(t1_.setDate(29,2,2000));
   
-  ASSERT_TRUE(t1_.setDate(1,1,2012));
-  ASSERT_TRUE(t1_.setDate(31,3,2012));
-  ASSERT_TRUE(t1_.setDate(1,1,2012));
-  ASSERT_TRUE(t1_.setDate(31,12,2012));
+  EXPECT_TRUE(t1_.setDate(1,1,2000));
+  EXPECT_TRUE(t1_.setDate(31,3,2000));
+  EXPECT_TRUE(t1_.setDate(1,1,2000));
+  EXPECT_TRUE(t1_.setDate(31,12,2000));
   
  
 }
@@ -106,6 +98,26 @@ TEST_F(TaskTest, getProperTime) {
   setDateTime();
   EXPECT_EQ(t2_.getTime(), "Sat May 22 14:40:25 2010\n");
   
+}
+
+TEST_F(TaskTest, convert) {
+   Task tmp = Task::convert(		t1_.convert());
+
+   EXPECT_EQ(tmp.getId(), 			t1_.getId());
+   EXPECT_EQ(tmp.getTitle(),		t1_.getTitle());
+   EXPECT_EQ(tmp.getDescription(),	t1_.getDescription());
+   EXPECT_EQ(tmp.getTime(),			t1_.getTime());
+   EXPECT_EQ(tmp.getPriority(),		t1_.getPriority());
+   EXPECT_EQ(tmp.getSeverity(),		t1_.getSeverity());
+   
+   tmp = Task::convert(		t2_.convert());
+
+   EXPECT_EQ(tmp.getId(), 			t2_.getId());
+   EXPECT_EQ(tmp.getTitle(),		t2_.getTitle());
+   EXPECT_EQ(tmp.getDescription(),	t2_.getDescription());
+   EXPECT_EQ(tmp.getTime(),			t2_.getTime());
+   EXPECT_EQ(tmp.getPriority(),		t2_.getPriority());
+   EXPECT_EQ(tmp.getSeverity(),		t2_.getSeverity());
 }
 
 

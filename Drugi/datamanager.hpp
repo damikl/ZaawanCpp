@@ -11,6 +11,7 @@ public:
 	bool saveToFile(std::string name) const;
 	bool auth(const std::string& pass);
 	bool auth_required() const;
+	bool isAuthDone() const;
 	void setPasscode(const std::string& oldPass, const std::string& newPass);
 	int addTask(std::string title);
 	Todos::iterator find(int id);
@@ -22,6 +23,7 @@ private:
 	DataManager();
 	DataManager(DataManager const&);
 	DataManager& operator=(DataManager const&);
+	~DataManager(){}
 	static DataManager* onlyInstance;
 	std::string name;
 	std::string passcode;
@@ -29,7 +31,5 @@ private:
 	bool auth_done;
 	
 };
-
-DataManager* DataManager::onlyInstance = NULL;
 
 #endif

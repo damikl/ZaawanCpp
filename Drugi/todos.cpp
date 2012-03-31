@@ -14,8 +14,16 @@ struct TaskChecker {
 		}
 };
 
-bool compareByTime (Task t1, Task t2 ) {
+bool compareByTime (const Task& t1, const Task& t2 ) {
 	return t1.timeOrder(t2);
+}
+
+bool compareById (const Task& t1, const Task& t2 ) {
+	return t1.getId() < t2.getId();
+}
+
+bool equalById (const Task& t1, const Task& t2 ) {
+	return t1.getId() == t2.getId();
 }
 
 Todos::Todos() 
@@ -28,7 +36,8 @@ list<Task>::const_iterator Todos::find(int id) const
 	TasksGroup::const_iterator it;
 	TaskChecker checker;
 	checker.id = id;
-	return find_if(tasks.begin(),tasks.end(),checker);	
+	it = find_if(tasks.begin(),tasks.end(),checker);
+	return it;
 }
 
 list<Task>::iterator Todos::find(int id)
@@ -36,7 +45,8 @@ list<Task>::iterator Todos::find(int id)
 	TasksGroup::iterator it;
 	TaskChecker checker;
 	checker.id = id;
-	return find_if(tasks.begin(),tasks.end(),checker);	
+	it = find_if(tasks.begin(),tasks.end(),checker);
+	return it;
 }
 
 bool Todos::existTask(int id) const
@@ -45,8 +55,11 @@ bool Todos::existTask(int id) const
 }
 
 Task Todos::getTask(int id) const {
+	TasksGroup::const_iterator it = find(id);
+	if(it != end())
+		return *it;
 	
-	return *find(id);
+	return Task(-1,"");
 }
 
 void Todos::removeTask(int id) {
@@ -55,8 +68,11 @@ void Todos::removeTask(int id) {
 		tasks.remove_if(checker);
 	}
 
-void Todos::addTask(Task task){
+bool Todos::addTask(const Task& task){
+		if(existTask(task.getId()))
+			return false;
 		tasks.push_front(task);
+		return true;
 	}
 
 int Todos::nextId() const
@@ -66,6 +82,7 @@ int Todos::nextId() const
 	do{
 		result = (result*rand()) % (7*size() + 1);
 	}while( existTask(result) );
+	return result;
 	
 }
 

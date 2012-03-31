@@ -28,7 +28,7 @@ public:
 	void setPriority(string priority);
 	void setSeverity(string severity);
 	
-	bool operator ==(const Task& b) const;
+//	bool operator ==(const Task& b) const;
 	
 	//sorting 
 	bool timeOrder(const Task& task) const;
