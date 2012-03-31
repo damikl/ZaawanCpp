@@ -103,6 +103,7 @@ bool DataManager::auth(const string& pass)
 	}
 	return false;
 }
+
 bool DataManager::auth_required() const
 {
 	return !this->passcode.empty();

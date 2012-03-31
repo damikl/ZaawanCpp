@@ -1,6 +1,7 @@
 #include "task.hpp"
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <memory.h>
 #include <list>
 
@@ -190,10 +191,13 @@ bool Task::timeOrder(const Task& task) const {
 		
 		return dif >= 0;
 	}
+	
 bool Task::setDate(int day, int month, int year ) {
 	if(day > 31 || day < 1 || month > 12 || month < 1)
 	{
-		cerr << "argument out of range: " << day << " " << month << " " << year  << endl;
+		stringstream ss;
+		ss << day << " " << month << " " << year << endl;
+		throw invalid_argument(ss.str());
 		return false;
 	}
 	struct tm tmp;
@@ -207,12 +211,16 @@ bool Task::setDate(int day, int month, int year ) {
 	tmp.tm_sec = timeinfo.tm_sec;
 	
 	if(mktime(&tmp) < 0) {
-		cerr << "mktime() failed" << endl;
+		stringstream ss;
+		ss << day << " " << month << " " << year << endl;
+		throw invalid_argument("mktime() failed to accept: " + ss.str());
 		return false;
 	}
 	if(tmp.tm_mday != day)
 	{
-		cerr << "day shifted to: " << tmp.tm_mday << " " << tmp.tm_mon+1 << " " << tmp.tm_year +1900 << endl;
+		stringstream ss;
+		ss << tmp.tm_mday << " " << tmp.tm_mon+1 << " " << tmp.tm_year +1900 << endl;
+		throw invalid_argument("day shifted to: " + ss.str());
 		return false;
 	}
 
@@ -225,7 +233,12 @@ bool Task::setTime(int hour, int minutes, int seconds)
 	if(	hour > 23 || hour < 0 || 
 				minutes > 59 || minutes < 0 || 
 				seconds > 59 || seconds < 0)
-	{	return false;	}
+	{
+		stringstream ss;
+		ss << hour << " " << minutes << " " << seconds << endl;
+		throw invalid_argument("invalid time: " + ss.str());
+		return false;	
+	}
 	
 	timeinfo.tm_hour = hour;
 	timeinfo.tm_min = minutes;

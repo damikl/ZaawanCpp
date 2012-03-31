@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <stdexcept>
 #include "task.hpp"
 using namespace std;
  
@@ -59,14 +60,14 @@ TEST_F(TaskTest, doInitialTrim) {
 
 TEST_F(TaskTest, setValidDate) {
   
-  EXPECT_FALSE(t1_.setDate(8,0,2000));
-  EXPECT_FALSE(t1_.setDate(8,13,2000));
+  EXPECT_THROW(t1_.setDate(8,0,2000),invalid_argument);
+  EXPECT_THROW(t1_.setDate(8,13,2000),invalid_argument);
   
-  EXPECT_FALSE(t1_.setDate(32,1,2000));
-  EXPECT_FALSE(t1_.setDate(0,1,2000));
+  EXPECT_THROW(t1_.setDate(32,1,2000),invalid_argument);
+  EXPECT_THROW(t1_.setDate(0,1,2000),invalid_argument);
   
   //Leap Year
-  EXPECT_FALSE(t1_.setDate(29,2,2001));
+  EXPECT_THROW(t1_.setDate(29,2,2001),invalid_argument);
   EXPECT_TRUE(t1_.setDate(29,2,2000));
   
   EXPECT_TRUE(t1_.setDate(1,1,2000));
@@ -79,12 +80,12 @@ TEST_F(TaskTest, setValidDate) {
 
 TEST_F(TaskTest, setValidTime) {
 	
-  ASSERT_FALSE(t1_.setTime(24,5,3));
-  ASSERT_FALSE(t1_.setTime(-1,5,3));
-  ASSERT_FALSE(t1_.setTime(22,60,3));
-  ASSERT_FALSE(t1_.setTime(22,-1,3));
-  ASSERT_FALSE(t1_.setTime(22,4,60));
-  ASSERT_FALSE(t1_.setTime(22,4,-1));
+  ASSERT_THROW(t1_.setTime(24,5,3),invalid_argument);
+  ASSERT_THROW(t1_.setTime(-1,5,3),invalid_argument);
+  ASSERT_THROW(t1_.setTime(22,60,3),invalid_argument);
+  ASSERT_THROW(t1_.setTime(22,-1,3),invalid_argument);
+  ASSERT_THROW(t1_.setTime(22,4,60),invalid_argument);
+  ASSERT_THROW(t1_.setTime(22,4,-1),invalid_argument);
   
   ASSERT_TRUE(t1_.setTime(23,59,59));
   ASSERT_TRUE(t1_.setTime(0,0,0));
@@ -97,6 +98,11 @@ TEST_F(TaskTest, setValidTime) {
 TEST_F(TaskTest, getProperTime) {
   setDateTime();
   EXPECT_EQ(t2_.getTime(), "Sat May 22 14:40:25 2010\n");
+  
+}
+TEST_F(TaskTest, timeOrder) {
+  
+  EXPECT_TRUE(t1_.timeOrder(t2_));
   
 }
 

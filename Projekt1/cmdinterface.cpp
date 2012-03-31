@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
+#include <stdexcept>
 #include "datamanager.hpp"
 using namespace std;
 
@@ -37,13 +38,17 @@ bool set_date(int id)
 		
 		cout << "podaj: rok" << endl;
 		year = get_from_stdin();
-		
-		if( data->getList().find(id)->setDate(day,month,year) )
-		{
-			return true;
+		try{
+			if( data->getList().find(id)->setDate(day,month,year) )
+			{
+				return true;
+			}
 		}
-		else
+		catch(invalid_argument e)
+		{
 			cerr << "bledna data" << endl;
+		}
+
 	}
 	return false;
 }
@@ -67,13 +72,17 @@ bool set_time(int id)
 		
 		cout << "podaj: sekunde" << endl;
 		sec = get_from_stdin();
-		
+		try{
 		if( data->getList().find(id)->setTime(hour,min,sec) )
 		{
 			return true;
 		}
-		else
+		}
+		catch(invalid_argument e)
+		{
 			cerr << "bledny czas" << endl;
+		}
+			
 	}
 	return false;
 }

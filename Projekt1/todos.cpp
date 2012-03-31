@@ -1,5 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include <sstream>
+#include <stdexcept>
 #include "todos.hpp"
 using namespace std;
 
@@ -59,6 +61,9 @@ Task Todos::getTask(int id) const {
 	if(it != end())
 		return *it;
 	
+	stringstream ss;
+	ss << id << endl;
+	throw invalid_argument("no task with id: " + ss.str());
 	return Task(-1,"");
 }
 

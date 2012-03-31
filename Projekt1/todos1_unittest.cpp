@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <algorithm>
+#include <stdexcept>
 #include "todos.hpp"
 using namespace std;
 
@@ -97,16 +98,16 @@ TEST_F(TodosTest,getTask)
 	EXPECT_EQ(5,l3.getTask(5).getId());
 	EXPECT_EQ(6,l3.getTask(6).getId());
 	
-	EXPECT_EQ(-1,l1.getTask(0).getId());
-	EXPECT_EQ(-1,l1.getTask(2).getId());
+	EXPECT_THROW(l1.getTask(0).getId(),invalid_argument);
+	EXPECT_THROW(l1.getTask(2).getId(),invalid_argument);
 	
-	EXPECT_EQ(-1,l2.getTask(1).getId());
-	EXPECT_EQ(-1,l2.getTask(4).getId());
-	EXPECT_EQ(-1,l2.getTask(6).getId());
+	EXPECT_THROW(l2.getTask(1).getId(),invalid_argument);
+	EXPECT_THROW(l2.getTask(4).getId(),invalid_argument);
+	EXPECT_THROW(l2.getTask(6).getId(),invalid_argument);
 	
-	EXPECT_EQ(-1,l3.getTask(3).getId());
-	EXPECT_EQ(-1,l3.getTask(7).getId());
-	EXPECT_EQ(-1,l3.getTask(1).getId());
+	EXPECT_THROW(l3.getTask(3).getId(),invalid_argument);
+	EXPECT_THROW(l3.getTask(7).getId(),invalid_argument);
+	EXPECT_THROW(l3.getTask(1).getId(),invalid_argument);
 }
 
 
