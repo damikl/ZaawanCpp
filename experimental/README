@@ -1,0 +1,8 @@
+Wymagania:
+Google test 
+
+W dowolnym innym katalogu należy użyć komendy cmake {ścieżka do katalogu projektu}
+a następnie użyć make.
+
+Testy uruchamia się za pomocą make test
+

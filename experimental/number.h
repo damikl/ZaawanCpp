@@ -5,10 +5,10 @@ class Number
 {
 public:
 	Number(long num = 0);
-	long getValue();
+	long getValue() const;
 	long putDigit(long num);
-	Number nwd(long num);
-	Number nww(long num);
+	long nwd(long num);
+	long nww(long num);
 private: 
 	long number;
 };

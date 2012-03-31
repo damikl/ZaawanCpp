@@ -1,6 +1,0 @@
-Wymagania:
-Google test 
-
-Projekt powinien się kompilować po użyciu cmake ./
-a następnie make.
-

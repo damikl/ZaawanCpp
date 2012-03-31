@@ -1,0 +1,14 @@
+Do poprawnej kompilacji wymagane jest zainstalowanie boblioteki google test
+
+Aby uruchomić projekt należy
+- utworzyc katalogu głównym programu folder o dowolnej nazwie
+- wewnatrz nowego filderu wywolac:
+- 	cmake ..
+- 	make
+
+Powstaną 4 pliki wykonywalne
+TodosList - program głowny
+TaskTest, TodosTest, DataManagerTest - pliki z testami
+aby uruchomić wszystkie testy należy uzyć komendy:
+-	make test
+
