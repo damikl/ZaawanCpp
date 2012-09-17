@@ -1,0 +1,65 @@
+#include "meteor.h"
+#include "def.h"
+
+SideSettings* SideSettings::tab[2] = {NULL,NULL};
+
+float Meteor::degreesToRadian(float d) {
+    return (d*3.14159)/180;
+}
+
+void Meteor::drawTexture() {
+  b2Vec2 position = body->GetPosition();
+  int texture = tex.getTex();
+//  LOGI("draw image (%i)", texture);
+
+  #define fX(x) ((int)(x * (1  << 16)))
+  int square[12] = {
+    fX(-0.5), fX(-0.5), 0,
+    fX(0.5), fX(-0.5), 0,
+    fX(-0.5), fX(0.5), 0,
+    fX(0.5), fX(0.5), 0
+  };
+
+  int texCoords[8] = {
+      0, fX(1),
+      fX(1), fX(1),
+      0,0,
+      fX(1),0
+  };
+  glPushMatrix();
+  glBindTexture( GL_TEXTURE_2D, texture );
+  glTranslatef(position.x, position.y, 0);
+  glScalef(20,20,0);
+  glVertexPointer(3, GL_FIXED, 0, square);
+  glTexCoordPointer(2, GL_FIXED, 0, texCoords);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  glPopMatrix();
+}
+
+void Meteor::draw() {
+      b2Vec2 position = body->GetPosition();
+      int segments = 50;
+      
+      GLfloat vertices[segments*2];
+      int count=0;
+      for (GLfloat i = 0; i < 360.0f; i+=(360.0f/segments))
+      {
+	vertices[count++] = position.x+(cos(degreesToRadian(i))*10);
+	vertices[count++] = position.y+(sin(degreesToRadian(i))*10);
+      }
+      GLfloat colors[segments][4];
+      for(int i=0;i<segments;i++)
+      {
+	  colors[i][0] = 1.0f;
+	  colors[i][1] = 0.0f;
+	  colors[i][2] = 0.0f;
+	  colors[i][3] = 1.0f;
+      }
+      glColorPointer(4, GL_FLOAT, 0, colors);
+      glVertexPointer (2, GL_FLOAT , 0, vertices); 
+      glDrawArrays (GL_TRIANGLE_FAN, 0, segments);
+}
+
+b2Body* Meteor::getBody() {
+  return body;
+}

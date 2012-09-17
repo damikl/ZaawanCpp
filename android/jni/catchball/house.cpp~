@@ -1,0 +1,116 @@
+#include "house.h"
+
+void House::setTexture(int tex)
+{
+  texture = tex;
+}
+
+void House::draw() {
+    GLfloat colors[3][4] =
+    {
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f},
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f},
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f}
+    };
+
+    b2Vec2 position = house->GetPosition();
+    
+    GLfloat vertices[4][2] =
+    {
+	{position.x+100.0f, position.y+50.0f},
+	{position.x-100.0f, position.y+50.0f},
+	{position.x-100.0f, position.y-50.0f},
+	{position.x+100.0f, position.y-50.0f}
+    }; 
+    
+    draw_square(vertices, colors); 
+    
+    GLfloat roofColor[3][4] =
+    {
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f},
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f},
+	{1.0f - health/255.0f, health/255.0f, 0.0f, 1.0f}
+    };
+    
+    GLfloat roofVertices[4][2] =
+    {
+	{240-120, 100},
+	{240+120, 100},
+	{240, 150},
+    }; 
+    
+    glVertexPointer(2, GL_FLOAT, 0, roofVertices);
+    glColorPointer(4, GL_FLOAT, 0, roofColor);
+
+    // Draw the triangle (3 vertices)
+    glDrawArrays(GL_TRIANGLES, 0, 3);  
+}
+
+void House::draw_square(GLfloat vertex[4][2], GLfloat colors[3][4]) {    
+    GLfloat vertices[3][2] =
+    {
+	{vertex[0][0], vertex[0][1]},
+	{vertex[1][0], vertex[1][1]},
+	{vertex[2][0], vertex[2][1]},
+    };
+    
+    glVertexPointer(2, GL_FLOAT, 0, vertices);
+    glColorPointer(4, GL_FLOAT, 0, colors);
+    glDrawArrays(GL_TRIANGLES, 0, 3); 
+    
+    GLfloat vertices1[3][2] =
+    {
+	{vertex[0][0], vertex[0][1]},
+	{vertex[2][0], vertex[2][1]},
+	{vertex[3][0], vertex[3][1]},
+    };
+    
+    glVertexPointer(2, GL_FLOAT, 0, vertices1);
+    glColorPointer(4, GL_FLOAT, 0, colors);
+    glDrawArrays(GL_TRIANGLES, 0, 3); 
+}
+
+void House::drawTexture()
+{
+  #define fX(x) ((int)(x * (1  << 16)))
+  int square[12] = {
+    fX(-0.5), fX(-0.5), 0,
+    fX(0.5), fX(-0.5), 0,
+    fX(-0.5), fX(0.5), 0,
+    fX(0.5), fX(0.5), 0
+  };
+
+  int texCoords[8] = {
+      0, fX(1),
+      fX(1), fX(1),
+      0,0,
+      fX(1),0
+  };
+  b2Vec2 position = house->GetPosition();
+    
+    GLfloat vertices[12] =
+    {
+	position.x+100.0f, position.y+50.0f, 0,
+	position.x-100.0f, position.y+50.0f, 0,
+	position.x-100.0f, position.y-50.0f, 0,
+	position.x+100.0f, position.y-50.0f, 0
+    };
+  glPushMatrix();
+  glTranslatef(240, 50, 0);
+  glScalef(50,50,0);
+  glRotatef(1,0.0f,0.0f,1.0f);
+  glBindTexture( GL_TEXTURE_2D, texture );
+  glVertexPointer(3, GL_FIXED, 0, vertices);
+  //glVertexPointer(3, GL_FIXED, 0, square);
+  glTexCoordPointer(2, GL_FIXED, 0, texCoords);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  glPopMatrix();
+}
+
+GLfloat House::getHealth() {
+  return health;
+}
+
+void House::decreaseHealth(GLfloat h) {
+  health -= h;
+}

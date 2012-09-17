@@ -1,0 +1,47 @@
+#ifndef _METEOR_H_
+#define _METEOR_H_
+
+#include <time.h>
+#include <stdlib.h>
+
+#include <EGL/egl.h>
+#include <GLES/gl.h>
+#include <GLES2/gl2.h>
+#include <GLES2/gl2ext.h>
+
+#include "Box2D.h"
+
+class Meteor {
+private:
+  b2Body* body;
+  b2BodyDef bodyDef;
+  b2CircleShape dynamicBox;
+  b2FixtureDef fixtureDef;
+  
+public:
+  Meteor(b2World *world) {
+    // Define the dynamic body. We set its position and call the body factory.
+    bodyDef.type = b2_dynamicBody;
+    srand ( time(NULL) );
+    bodyDef.position.Set(rand() % 240 + 120, 800.0f);
+    body = world->CreateBody(&bodyDef);
+    // Define another box shape for our dynamic body.
+    dynamicBox.m_radius = 10.0f;
+    // Define the dynamic body fixture.
+    fixtureDef.shape = &dynamicBox;
+    // Set the box density to be non-zero, so it will be dynamic.
+    fixtureDef.density = 1.0f;
+    // Override the default friction.
+    fixtureDef.friction = 0.3f;
+    // Add the shape to the body.
+    body->CreateFixture(&fixtureDef);
+
+    b2Vec2 force(0.0f, -100.0f);
+    body->SetLinearVelocity(force);
+  }
+  float degreesToRadian(float d);
+  void draw();
+  b2Body* getBody();
+};
+
+#endif

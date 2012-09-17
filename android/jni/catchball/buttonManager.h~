@@ -1,0 +1,29 @@
+#ifndef _BUTTON_MANAGER_H_
+#define _BUTTON_MANAGER_H_
+
+#include <time.h>
+#include <stdlib.h>
+
+#include "button.h"
+
+class buttonManager {
+private:
+  Button buttons[4];
+  int active;
+  
+public:
+  buttonManager() {
+    active = 0;
+    buttons[0] = Button(30.0f, 30.0f);
+    buttons[1] = Button(450.0f, 30.0f);
+    buttons[2] = Button(450.0f, 770.0f);
+    buttons[3] = Button(30.0f, 770.0f);
+  }  
+  void nextActive();
+  bool isPressed(int x, int y);
+  void draw();
+  void drawTexture();
+  void setTextures(int blue, int red);
+};
+
+#endif

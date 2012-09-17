@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/armeabi-v7a
+directory /home/damian/android-ndk-r7b/platforms/android-14/arch-arm/usr/include jni/../jni/catchball/Box2D jni/../jni/catchball/../libzip/ jni/../jni/catchball/../libpng/ /home/damian/android-ndk-r7b/sources/cxx-stl/gnu-libstdc++/include /home/damian/android-ndk-r7b/sources/cxx-stl/gnu-libstdc++/libs/armeabi-v7a/include jni/../jni/libpng jni/../jni/libzip
